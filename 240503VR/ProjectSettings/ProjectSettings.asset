@@ -825,7 +825,13 @@ PlayerSettings:
   XboxOneOverrideIdentityPublisher: 
   vrEditorSettings: {}
   cloudServicesEnabled:
+    Build: 0
+    Game Performance: 0
+    Legacy Analytics: 0
+    Purchasing: 0
+    UDP: 0
     UNet: 1
+    Unity Ads: 0
   luminIcon:
     m_Name: 
     m_ModelFolderPath: 
@@ -845,11 +851,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: 5016a05a-8a28-4756-97fe-9ca18438a5a5
+  cloudProjectId: de24b2bf-d818-4ce3-9f16-b0420cd679a9
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
   projectName: 240503VR
-  organizationId: harinn
+  organizationId: ksugamelab
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
