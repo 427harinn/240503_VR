@@ -10,6 +10,7 @@ public class ShootiongScript : MonoBehaviour
     /// 射出するオブジェクト
     /// </summary>
     [SerializeField, Tooltip("射出するオブジェクトをここに割り当てる")]
+    private GameObject[] ThrowingObjects;
     private GameObject ThrowingObject;
 
     /// <summary>
@@ -49,10 +50,21 @@ public class ShootiongScript : MonoBehaviour
     }
 
     /// <summary>
+    /// 弾の種類を決める
+    /// </summary>
+    private void RandomBallet()
+    {
+        int rnd = Random.Range(0, 4);
+        ThrowingObject = ThrowingObjects[rnd];
+    }
+
+    /// <summary>
     /// ボールを射出する
     /// </summary>
     private void ThrowingBall()
     {
+        RandomBallet();
+
         if (ThrowingObject != null && TargetPosition != null)
         {
             // Ballオブジェクトの生成

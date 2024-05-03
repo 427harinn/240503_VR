@@ -29,4 +29,13 @@ public class Animal1 : MonoBehaviour
 
         gameObject.transform.position += new Vector3(speed, 0, 0) * 0.1f;
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Ballet")
+        {
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+        }
+    }
 }
