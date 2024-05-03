@@ -73,24 +73,40 @@ public class AvatarSyn_s : MonoBehaviour
         photonHeadTransform.rotation = cameraTransform.rotation;
 
         Vector3 [] handPosL = getHandPositions(skeletonL);
-
-        //ç∂éËÇÃà íu
-        //photonHandLTransform.position = handLTransform.position;
-        photonHandLTransform.position = handPosL[5];
-        //ç∂éËÇÃâÒì]
-        photonHandLTransform.rotation = handLTransform.rotation;
-
         Vector3[] handPosR = getHandPositions(skeletonR);
 
-        //ç∂éËÇÃà íu
-        photonHandRTransform.position = handPosR[5];
-        //Debug.Log(cameraTransform.position);
-        //ç∂éËÇÃâÒì]
-        photonHandRTransform.rotation = handRTransform.rotation;
+        if (handPosL != null)
+        {
+            //ç∂éËÇÃà íu
+            //photonHandLTransform.position = handLTransform.position;
+            photonHandLTransform.position = handPosL[5];
+            //ç∂éËÇÃâÒì]
+            photonHandLTransform.rotation = handLTransform.rotation;
+        }
+
+        if (handPosR != null)
+        {
+            //ç∂éËÇÃà íu
+            photonHandRTransform.position = handPosR[5];
+            //Debug.Log(cameraTransform.position);
+            //ç∂éËÇÃâÒì]
+            photonHandRTransform.rotation = handRTransform.rotation;
+        }
+
+        
     }
 
     private Vector3[] getHandPositions(OVRSkeleton skeleton)
     {
+
+        var usingHand = OVRInput.IsControllerConnected(OVRInput.Controller.Hands);
+        //var usingTouch = OVRInput.IsControllerConnected(OVRInput.Controller.Touch);
+
+        if (!usingHand)
+        {
+            return null;
+        }
+
         Vector3 palmPosition = (
             skeleton.Bones[(int)OVRSkeleton.BoneId.Hand_Thumb0].Transform.position +
             skeleton.Bones[(int)OVRSkeleton.BoneId.Hand_Index1].Transform.position +
