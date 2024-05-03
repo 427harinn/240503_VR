@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
 
 public class AvatarSyn_s : MonoBehaviour
 {
-    //CameraRig
-    [SerializeField] Transform playerTransform;
+    ////CameraRig
+    //[SerializeField] Transform playerTransform;
     //Camera
     [SerializeField] Transform cameraTransform;
-    //生成したアバター(親)
-    Transform photonAvatarTransform = null;
+    ////生成したアバター(親)
+    //Transform photonAvatarTransform = null;
     //頭
     Transform photonHeadTransform = null;
 
@@ -22,7 +24,13 @@ public class AvatarSyn_s : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (photonAvatarTransform == null || photonHeadTransform == null)
+        //if (!photonView.IsMine)
+        //{
+        //    return;
+        //}
+
+        //if (photonAvatarTransform == null || photonHeadTransform == null)
+        if (photonHeadTransform == null)
         {
             return;
         }
@@ -34,17 +42,17 @@ public class AvatarSyn_s : MonoBehaviour
     public void SetPhotonAvatarTransform(Transform rootTrans, Transform headTrans)
     {
         //自分のアバターを設定
-        photonAvatarTransform = rootTrans;
+        //photonAvatarTransform = rootTrans;
         photonHeadTransform = headTrans;
     }
 
     void SynTransform()
     {
-        //親オブジェクトの位置
-        photonAvatarTransform.position = new Vector3(
-            playerTransform.position.x, 1, playerTransform.position.z);
-        //親オブジェクトの回転
-        photonAvatarTransform.rotation = playerTransform.rotation;
+        ////親オブジェクトの位置
+        //photonAvatarTransform.position = new Vector3(
+        //    playerTransform.position.x, 1, playerTransform.position.z);
+        ////親オブジェクトの回転
+        //photonAvatarTransform.rotation = playerTransform.rotation;
 
         //頭の位置
         photonHeadTransform.position = cameraTransform.position;

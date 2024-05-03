@@ -10,6 +10,8 @@ public class Observe_s : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
+        PhotonNetwork.AutomaticallySyncScene = true;
+        PhotonNetwork.GameVersion = "0.1";
         PhotonNetwork.NickName = nickName;
         PhotonNetwork.ConnectUsingSettings();
     }

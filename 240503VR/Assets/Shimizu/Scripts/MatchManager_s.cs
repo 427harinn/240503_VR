@@ -11,6 +11,8 @@ public class MatchManager_s: MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
+        PhotonNetwork.AutomaticallySyncScene = true;
+        PhotonNetwork.GameVersion = "0.1";
         PhotonNetwork.NickName = nickName;
         PhotonNetwork.ConnectUsingSettings();
     }
@@ -33,14 +35,15 @@ public class MatchManager_s: MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
+        Debug.Log("createAvatar");
         //アバター生成
         var position = playerRoot.position;
-        GameObject avatar = PhotonNetwork.Instantiate("PhotonAvatar", position, Quaternion.identity);
-        avatar.transform.parent = playerRoot;
+        GameObject avatar = PhotonNetwork.Instantiate("TestAvatar", position, Quaternion.identity);
+        //avatar.transform.parent = playerRoot;
 
-        //生成したアバターをセット
-        var headTrans = avatar.transform.GetChild(0).gameObject.transform;
-        GetComponent<AvatarSyn_s>().SetPhotonAvatarTransform(avatar.transform, headTrans); 
+        ////生成したアバターをセット
+        //var headTrans = avatar.transform;
+        //GetComponent<AvatarSyn_s>().SetPhotonAvatarTransform(avatar.transform, headTrans);
 
         if (PhotonNetwork.IsMasterClient)
         {
@@ -54,14 +57,5 @@ public class MatchManager_s: MonoBehaviourPunCallbacks
             // ルームのカスタムプロパティとして開始時刻を設定
             PhotonNetwork.CurrentRoom.SetCustomProperties(startTimeProps);
         }
-    }
-    public override void OnPlayerEnteredRoom(Player newPlayer)
-    {
-        Debug.Log("Enter => " + newPlayer.NickName);
-    }
-
-    public override void OnPlayerLeftRoom(Player player)
-    {
-        Debug.Log("left => " + player.NickName);
     }
 }
