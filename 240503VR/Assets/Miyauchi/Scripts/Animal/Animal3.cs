@@ -9,9 +9,17 @@ public class Animal3 : MonoBehaviour
     float moveChangeTime;
     [SerializeField] float time = 3.0f;
 
+    AudioSource audioSource;
+    [SerializeField] AudioClip hitSe;
+
+    Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+        animator = transform.GetChild(0).GetComponent<Animator>();
+
         Move1();
     }
 
@@ -73,10 +81,17 @@ public class Animal3 : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ballet")
         {
+            audioSource.PlayOneShot(hitSe);
             Destroy(collision.gameObject);
-            Destroy(gameObject);
             ScoreManager.instance.score_shootiong++;
             ScoreManager.instance.animalNum--;
+
+            animator.SetBool("hit", true);
         }
     }
+    /*
+    private void HitAnimFin()
+    {
+        Destroy(gameObject);
+    }*/
 }

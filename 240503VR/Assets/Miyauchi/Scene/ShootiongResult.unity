@@ -963,6 +963,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af2f9f4484e814f42aadd4c47e00b633, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shootiongSe: {fileID: 0}
   ThrowingObjects:
   - {fileID: 4816215833598833353, guid: 47f6335c08c0e444eaaecb20bfe0d005, type: 3}
   - {fileID: 3065608127864261600, guid: 520be20cd39e0a0499a358aae63939bd, type: 3}
@@ -1144,6 +1145,7 @@ GameObject:
   - component: {fileID: 230908512}
   - component: {fileID: 230908511}
   - component: {fileID: 230908514}
+  - component: {fileID: 230908515}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1242,6 +1244,20 @@ MonoBehaviour:
     m_Bits: 4294967295
   pointer: {fileID: 0}
   sortOrder: 0
+--- !u!114 &230908515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 230908509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c13818999cca02d48b549c8876060676, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 1514464029}
+  destroyPanelText: {fileID: 679972917}
 --- !u!1 &236798882 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -3038683422826217010, guid: cec41b28aca8f4aa58aa5560853df2df, type: 3}
@@ -3907,6 +3923,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score_shootiong: 0
   panel_shootiong: 0
+  defaultAnimalNum: 15
+  animalNum: 0
+  defaultHP: 10
+  restHP: 0
 --- !u!4 &802674801
 Transform:
   m_ObjectHideFlags: 0

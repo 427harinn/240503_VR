@@ -12,10 +12,13 @@ public class Animal1 : MonoBehaviour
     AudioSource audioSource;
     [SerializeField] AudioClip hitSe;
 
+    Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        animator = transform.GetChild(0).GetComponent<Animator>();
 
         Move0();
     }
@@ -63,11 +66,13 @@ public class Animal1 : MonoBehaviour
             ScoreManager.instance.score_shootiong++;
             ScoreManager.instance.animalNum--;
 
-            Invoke("HitAnimFin", 1.0f);
+            animator.SetBool("hit", true);
+
+            //Invoke("HitAnimFin", 1.0f); //後でアニメーション終了後に呼び出す処理に変更
         }
     }
 
-    private void HitAnimFin(){
+    /*private void HitAnimFin(){
         Destroy(gameObject);
-    }
+    }*/
 }

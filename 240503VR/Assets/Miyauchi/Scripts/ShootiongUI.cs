@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ShootiongUI : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class ShootiongUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        ScoreManager.instance.restHP = ScoreManager.instance.defaultHP;
+
         restTime = playtime;
     }
 
@@ -27,6 +30,7 @@ public class ShootiongUI : MonoBehaviour
         }
         else
         {
+            SceneManager.LoadScene("ShootiongResult");
             Debug.Log("タイムアップ");
         }
         timeText.text = (int)restTime + "秒";

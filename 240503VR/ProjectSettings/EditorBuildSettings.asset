@@ -14,6 +14,15 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Shimizu/Scene/Observe.unity
     guid: db28b8bb2bd2d324daa5105605e0feef
+  - enabled: 1
+    path: Assets/Miyauchi/Scene/ShootiongTitle.unity
+    guid: 2aee669a6c8df1d4dbbb9a6e53925049
+  - enabled: 1
+    path: Assets/Miyauchi/Scene/ShootiongPlay.unity
+    guid: 93557520171df454693ef677ae8245df
+  - enabled: 1
+    path: Assets/Miyauchi/Scene/ShootiongResult.unity
+    guid: 113bcd411c3ad714786f2ee4de61d811
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 28b80c184f1a7304db53c4262e2f33e9, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 9414964294d682646a12263d8785de51, type: 2}
