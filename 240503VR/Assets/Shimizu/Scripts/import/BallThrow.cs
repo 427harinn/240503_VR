@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BallThrow : MonoBehaviour
 {
-    [SerializeField] Transform rightHandAnchor;
+    [SerializeField] Transform handAnchor;
     ShowPointer showPointer;
     GameObject ball;
 
@@ -54,13 +54,13 @@ public class BallThrow : MonoBehaviour
     private void ThrowingBall()
     {
         // Ballオブジェクトの生成
-        GameObject ball = Instantiate(Resources.Load<GameObject>("ball"), rightHandAnchor.transform.position, Quaternion.identity);
+        GameObject ball = Instantiate(Resources.Load<GameObject>("ball"), handAnchor.transform.position, Quaternion.identity);
 
         // 射出角度
         float angle = ThrowingAngle;
 
         // 射出速度を算出
-        Vector3 velocity = CalculateVelocity(rightHandAnchor.transform.position, TargetPosition, angle);
+        Vector3 velocity = CalculateVelocity(handAnchor.transform.position, TargetPosition, angle);
 
         // 射出
         Rigidbody rid = ball.GetComponent<Rigidbody>();
