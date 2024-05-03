@@ -10,12 +10,12 @@ public class BodyExpansion_s : MonoBehaviour
     void Start()
     {
         bodyOriginTrans = transform;
-        cameraTrans = transform.parent.transform;
+        cameraTrans = transform.parent.transform.GetChild(0).transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        bodyOriginTrans.localScale = new Vector3(bodyOriginTrans.localScale.x, cameraTrans.localPosition.y + 1, bodyOriginTrans.localScale.z);
+        bodyOriginTrans.localScale = new Vector3(bodyOriginTrans.localScale.x, cameraTrans.localPosition.y - 1, bodyOriginTrans.localScale.z);
     }
 }
