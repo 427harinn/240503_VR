@@ -39,7 +39,17 @@ public class Animal1 : MonoBehaviour
 
     private void Move2()
     {
-        transform.DOMove(new Vector3(moveRange, 0, 0), time).SetRelative(true).OnComplete(Move1);
+        transform.DORotate(new Vector3(0, 0, 360), 1, RotateMode.LocalAxisAdd).OnComplete(Move3);
+    }
+
+    private void Move3()
+    {
+        transform.DOMove(new Vector3(moveRange, 0, 0), time).SetRelative(true).OnComplete(Move4);
+    }
+
+    private void Move4()
+    {
+        transform.DORotate(new Vector3(0, 0, 360), 1, RotateMode.LocalAxisAdd).OnComplete(Move1);
     }
 
     private void OnCollisionEnter(Collision collision)

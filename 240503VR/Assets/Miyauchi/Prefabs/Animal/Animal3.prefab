@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 8233567943329148959}
   - component: {fileID: 8511454096320825187}
   - component: {fileID: 4828307905811293570}
-  - component: {fileID: -8463091688160481393}
   - component: {fileID: 7117585781005761761}
+  - component: {fileID: -299038252057690142}
   m_Layer: 3
   m_Name: Animal3
   m_TagString: Untagged
@@ -107,20 +107,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-8463091688160481393
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3388209805080154124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55ff99804a0fcbb48a0fa551c207dae7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveChangeDeltaTime: 2
-  speed: 3
 --- !u!114 &7117585781005761761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,3 +124,17 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls: []
+--- !u!114 &-299038252057690142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3388209805080154124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b930235fa5662a5458a861582504122a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveRange: 2
+  time: 3
