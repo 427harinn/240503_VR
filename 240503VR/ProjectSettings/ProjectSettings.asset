@@ -141,6 +141,7 @@ PlayerSettings:
   tvOSBundleVersion: 1.0
   bundleVersion: 0.1
   preloadedAssets:
+  - {fileID: 0}
   - {fileID: 11400000, guid: b43c4b2581346674aa6bec1dde423d0d, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -874,11 +875,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: e9b8fbcf-1a8f-449d-bf0f-1046ea3f748e
+  cloudProjectId: f583587b-7fc7-4501-b312-b873150bdefa
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: 240503VR
-  organizationId: yoru06460
+  projectName: VR240503
+  organizationId: miyaharu867
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
