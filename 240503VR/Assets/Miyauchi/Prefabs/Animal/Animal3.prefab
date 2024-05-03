@@ -136,5 +136,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b930235fa5662a5458a861582504122a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveRange: 2
+  moveRange: 8
   time: 3

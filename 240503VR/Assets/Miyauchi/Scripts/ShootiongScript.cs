@@ -6,6 +6,9 @@ public class ShootiongScript : MonoBehaviour
 {
     ControllerLaserRenderer controllerLaserRenderer;
 
+    AudioSource audioSource;
+    [SerializeField] AudioClip shootiongSe;
+
     /// <summary>
     /// 射出するオブジェクト
     /// </summary>
@@ -28,6 +31,7 @@ public class ShootiongScript : MonoBehaviour
     private void Start()
     {
         controllerLaserRenderer = GetComponent<ControllerLaserRenderer>();
+        audioSource = GetComponent<AudioSource>();
 
         Collider collider = GetComponent<Collider>();
         if (collider != null)
@@ -39,9 +43,9 @@ public class ShootiongScript : MonoBehaviour
 
     private void Update()
     {
-        //if (Input.GetMouseButtonDown(0))
-        if (OVRInput.GetDown(OVRInput.Button.One))
+        if (OVRInput.GetDown(OVRInput.Button.One)) //右手Aボタン
         {
+            audioSource.PlayOneShot(shootiongSe);
             TargetPosition = controllerLaserRenderer.PointerPosition();
 
             // マウス左クリックでボールを射出する

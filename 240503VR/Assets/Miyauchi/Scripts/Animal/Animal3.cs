@@ -18,22 +18,20 @@ public class Animal3 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*if (moveChangeTime >= 0)
-        {
-            moveChangeTime -= Time.deltaTime;
-        }
-        else
-        {
-            moveChangeTime = moveChangeDeltaTime;
-            speed = -speed;
-        }
 
-        gameObject.transform.position += new Vector3(speed, 0, 0) * 0.1f;*/
+    }
+
+    private void Move0()
+    {
+        int rnd_x = Random.Range(-4, 4);
+        int rnd_y = Random.Range(0, 6);
+
+        transform.DOLocalMove(new Vector3(rnd_x, rnd_y, 0), time).SetRelative(true).OnComplete(Move1);
     }
 
     private void Move1()
     {
-        transform.DOMove(new Vector3(-moveRange, 0, 0), time).SetRelative(true).OnComplete(Move2);
+        transform.DOLocalMove(new Vector3(-moveRange, -moveRange / 1.5f, 0), time).SetRelative(true).OnComplete(Move2);
     }
 
     private void Move2()
@@ -48,7 +46,7 @@ public class Animal3 : MonoBehaviour
 
     private void Move4()
     {
-        transform.DOMove(new Vector3(moveRange, 0, 0), time).SetRelative(true).OnComplete(Move5);
+        transform.DOLocalMove(new Vector3(moveRange, moveRange / 1.5f, 0), time).SetRelative(true).OnComplete(Move5);
     }
 
     private void Move5()
@@ -57,6 +55,16 @@ public class Animal3 : MonoBehaviour
     }
 
     private void Move6()
+    {
+        transform.DOBlendableScaleBy(new Vector3(-1, -1, 0), 0.5f).OnComplete(Move7);
+    }
+
+    private void Move7()
+    {
+        transform.DOBlendableScaleBy(new Vector3(1, 1, 0), 0.5f).OnComplete(Move8);
+    }
+
+    private void Move8()
     {
         transform.DOBlendableScaleBy(new Vector3(-1, -1, 0), 0.5f).OnComplete(Move1);
     }
@@ -67,6 +75,8 @@ public class Animal3 : MonoBehaviour
         {
             Destroy(collision.gameObject);
             Destroy(gameObject);
+            ScoreManager.instance.score_shootiong++;
+            ScoreManager.instance.animalNum--;
         }
     }
 }

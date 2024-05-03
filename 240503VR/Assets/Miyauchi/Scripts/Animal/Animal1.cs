@@ -9,32 +9,34 @@ public class Animal1 : MonoBehaviour
     float moveChangeTime;
     [SerializeField] float time = 3.0f;
 
+    AudioSource audioSource;
+    [SerializeField] AudioClip hitSe;
+
     // Start is called before the first frame update
     void Start()
     {
-        Move1();
+        audioSource = GetComponent<AudioSource>();
+
+        Move0();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        /*if (moveChangeTime >= 0)
-        {
-            moveChangeTime -= Time.deltaTime;
-        }
-        else
-        {
-            moveChangeTime = moveChangeDeltaTime;
-            speed = -speed;
-        }
 
-        gameObject.transform.position += new Vector3(speed, 0, 0) * 0.1f;*/
+    }
+
+    private void Move0()
+    {
+        int rnd_x = Random.Range(-4, 4);
+        int rnd_y = Random.Range(0, 6);
+
+        transform.DOLocalMove(new Vector3(rnd_x, rnd_y, 0), time).SetRelative(true).OnComplete(Move1);
     }
 
     private void Move1()
     {
-        transform.DOMove(new Vector3(-moveRange, 0, 0), time).SetRelative(true).OnComplete(Move2);
+        transform.DOLocalMove(new Vector3(-moveRange, 0, 0), time).SetRelative(true).OnComplete(Move2);
     }
 
     private void Move2()
@@ -44,7 +46,7 @@ public class Animal1 : MonoBehaviour
 
     private void Move3()
     {
-        transform.DOMove(new Vector3(moveRange, 0, 0), time).SetRelative(true).OnComplete(Move4);
+        transform.DOLocalMove(new Vector3(moveRange, 0, 0), time).SetRelative(true).OnComplete(Move4);
     }
 
     private void Move4()
@@ -56,8 +58,16 @@ public class Animal1 : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ballet")
         {
+            audioSource.PlayOneShot(hitSe);
             Destroy(collision.gameObject);
-            Destroy(gameObject);
+            ScoreManager.instance.score_shootiong++;
+            ScoreManager.instance.animalNum--;
+
+            Invoke("HitAnimFin", 1.0f);
         }
+    }
+
+    private void HitAnimFin(){
+        Destroy(gameObject);
     }
 }

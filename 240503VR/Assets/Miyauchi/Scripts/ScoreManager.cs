@@ -8,6 +8,8 @@ public class ScoreManager : MonoBehaviour
 
     public int score_shootiong = 0;
     public int panel_shootiong = 0;
+    public int defaultAnimalNum = 15;
+    public int animalNum = 0;
 
     private void Awake()
     {
