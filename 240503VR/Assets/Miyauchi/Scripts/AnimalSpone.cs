@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class AnimalSpone : MonoBehaviour
 {
-    GameObject[] spones;
-    GameObject[] animals;
+    [SerializeField] GameObject[] spones;
+    [SerializeField] GameObject[] animals;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        sponeDeside();
     }
 
     // Update is called once per frame
@@ -26,6 +26,6 @@ public class AnimalSpone : MonoBehaviour
     {
         int rnd_spone = Random.Range(0, spones.Length);
         int rnd_animal = Random.Range(0, animals.Length);
-        Instantiate(animals[rnd_animal]);
+        Instantiate(animals[rnd_animal], spones[rnd_spone].transform.position, Quaternion.identity);
     }
 }
