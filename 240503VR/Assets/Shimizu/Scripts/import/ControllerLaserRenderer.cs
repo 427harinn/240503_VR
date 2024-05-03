@@ -8,6 +8,8 @@ public class ControllerLaserRenderer : MonoBehaviour
     [SerializeField] LineRenderer lineRenderer;
     [SerializeField] float maxRayDistance = 500.0f;
 
+    Vector3 rayLastpos;
+
     void Update()
     {
         // 右手のコントローラの位置と向いている方向からRayを作成
@@ -25,16 +27,21 @@ public class ControllerLaserRenderer : MonoBehaviour
             // Colliderがなければ、最大長のレーザーを描画
             renderLaserFullLength(laserPointer);
         }
+
+        //Debug.Log(pointer);
     }
+    Vector3 pointer;
 
     private void renderLaserToHit(Ray ray, RaycastHit hit)
     {
         renderLaser(ray.origin, hit.point);
+        rayLastpos = hit.point;
     }
 
     private void renderLaserFullLength(Ray ray)
     {
         renderLaser(ray.origin, ray.origin + ray.direction * maxRayDistance);
+        rayLastpos = ray.origin + ray.direction * maxRayDistance;
     }
 
     private void renderLaser(Vector3 from, Vector3 to)
@@ -42,6 +49,11 @@ public class ControllerLaserRenderer : MonoBehaviour
         // Line Rendererの1点目と2点目の位置を指定する
         lineRenderer.SetPosition(0, from);
         lineRenderer.SetPosition(1, to);
+    }
+
+    public Vector3 PointerPosition()
+    {
+        return rayLastpos;
     }
 
 }
