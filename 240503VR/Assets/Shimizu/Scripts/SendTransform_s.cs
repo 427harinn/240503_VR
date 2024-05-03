@@ -8,12 +8,18 @@ public class SendTransform_s : MonoBehaviour, IPunObservable
 {
     //頭
     Transform photonHeadTransform = null;
+    //左手
+    Transform photonHandLTransform = null;
+    //右手
+    Transform photonHandRTransform = null;
 
     // Start is called before the first frame update
     void Start()
     {
         //photonHeadTransform = transform.GetChild(0).gameObject.transform;
         photonHeadTransform = transform;
+        photonHandLTransform = transform.GetChild(0).gameObject.transform;
+        photonHandRTransform = transform.GetChild(1).gameObject.transform;
     }
 
     // Update is called once per frame
@@ -34,12 +40,24 @@ public class SendTransform_s : MonoBehaviour, IPunObservable
         {
             stream.SendNext(photonHeadTransform.position);
             stream.SendNext(photonHeadTransform.rotation);
+
+            stream.SendNext(photonHandLTransform.position);
+            stream.SendNext(photonHandLTransform.rotation);
+
+            stream.SendNext(photonHandRTransform.position);
+            stream.SendNext(photonHandRTransform.rotation);
         }
         //相手のクライアントから自身のクライアントの同期オブジェクトに送られてくる情報
         else
         {
             photonHeadTransform.position = (Vector3)stream.ReceiveNext();
             photonHeadTransform.rotation = (Quaternion)stream.ReceiveNext();
+
+            photonHandLTransform.position = (Vector3)stream.ReceiveNext();
+            photonHandLTransform.rotation = (Quaternion)stream.ReceiveNext();
+
+            photonHandRTransform.position = (Vector3)stream.ReceiveNext();
+            photonHandRTransform.rotation = (Quaternion)stream.ReceiveNext();
         }
     }
 }
