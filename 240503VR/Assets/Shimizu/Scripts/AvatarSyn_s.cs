@@ -18,7 +18,6 @@ public class AvatarSyn_s : MonoBehaviour
     //Transform photonAvatarTransform = null;
     //ì™
     Transform photonHeadTransform = null;
-
     //ç∂éË
     Transform photonHandLTransform = null;
     //âEéË
@@ -78,7 +77,6 @@ public class AvatarSyn_s : MonoBehaviour
         if (handPosL != null)
         {
             //ç∂éËÇÃà íu
-            //photonHandLTransform.position = handLTransform.position;
             photonHandLTransform.position = handPosL[5];
             //ç∂éËÇÃâÒì]
             photonHandLTransform.rotation = handLTransform.rotation;
@@ -93,10 +91,11 @@ public class AvatarSyn_s : MonoBehaviour
             photonHandRTransform.rotation = handRTransform.rotation;
         }
 
-        
+        //test.position = handLTransform.position;
+        //test.rotation = handLTransform.rotation;
     }
 
-    private Vector3[] getHandPositions(OVRSkeleton skeleton)
+    public Vector3[] getHandPositions(OVRSkeleton skeleton)
     {
 
         var usingHand = OVRInput.IsControllerConnected(OVRInput.Controller.Hands);
