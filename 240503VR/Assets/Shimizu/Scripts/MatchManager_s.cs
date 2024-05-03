@@ -38,12 +38,12 @@ public class MatchManager_s: MonoBehaviourPunCallbacks
         Debug.Log("createAvatar");
         //アバター生成
         var position = playerRoot.position;
-        GameObject avatar = PhotonNetwork.Instantiate("TestAvatar", position, Quaternion.identity);
+        GameObject avatar = PhotonNetwork.Instantiate("HeadAvatar", position, Quaternion.identity);
         //avatar.transform.parent = playerRoot;
 
-        ////生成したアバターをセット
-        //var headTrans = avatar.transform;
-        //GetComponent<AvatarSyn_s>().SetPhotonAvatarTransform(avatar.transform, headTrans);
+        //生成したアバターをセット
+        var trans = avatar.transform;
+        GetComponent<AvatarSyn_s>().SetPhotonAvatarTransform(trans);
 
         if (PhotonNetwork.IsMasterClient)
         {

@@ -10,10 +10,20 @@ public class AvatarSyn_s : MonoBehaviour
     //[SerializeField] Transform playerTransform;
     //Camera
     [SerializeField] Transform cameraTransform;
+    [SerializeField] Transform handLTransform;
+    [SerializeField] Transform handRTransform;
+    [SerializeField] OVRSkeleton skeletonL;
+    [SerializeField] OVRSkeleton skeletonR;
     ////生成したアバター(親)
     //Transform photonAvatarTransform = null;
     //頭
     Transform photonHeadTransform = null;
+
+    //左手
+    Transform photonHandLTransform = null;
+    //右手
+    Transform photonHandRTransform = null;
+
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +40,7 @@ public class AvatarSyn_s : MonoBehaviour
         //}
 
         //if (photonAvatarTransform == null || photonHeadTransform == null)
-        if (photonHeadTransform == null)
+        if (photonHeadTransform == null || photonHandLTransform == null || photonHandRTransform == null)
         {
             return;
         }
@@ -39,11 +49,13 @@ public class AvatarSyn_s : MonoBehaviour
         SynTransform();
     }
 
-    public void SetPhotonAvatarTransform(Transform rootTrans, Transform headTrans)
+    public void SetPhotonAvatarTransform(Transform rootTrans)
     {
         //自分のアバターを設定
         //photonAvatarTransform = rootTrans;
-        photonHeadTransform = headTrans;
+        photonHeadTransform = rootTrans;
+        photonHandLTransform = rootTrans.GetChild(0).transform;
+        photonHandRTransform = rootTrans.GetChild(1).transform;
     }
 
     void SynTransform()
@@ -59,5 +71,40 @@ public class AvatarSyn_s : MonoBehaviour
         //Debug.Log(cameraTransform.position);
         //頭の回転
         photonHeadTransform.rotation = cameraTransform.rotation;
+
+        Vector3 [] handPosL = getHandPositions(skeletonL);
+
+        //左手の位置
+        //photonHandLTransform.position = handLTransform.position;
+        photonHandLTransform.position = handPosL[5];
+        //左手の回転
+        photonHandLTransform.rotation = handLTransform.rotation;
+
+        Vector3[] handPosR = getHandPositions(skeletonR);
+
+        //左手の位置
+        photonHandRTransform.position = handPosR[5];
+        //Debug.Log(cameraTransform.position);
+        //左手の回転
+        photonHandRTransform.rotation = handRTransform.rotation;
+    }
+
+    private Vector3[] getHandPositions(OVRSkeleton skeleton)
+    {
+        Vector3 palmPosition = (
+            skeleton.Bones[(int)OVRSkeleton.BoneId.Hand_Thumb0].Transform.position +
+            skeleton.Bones[(int)OVRSkeleton.BoneId.Hand_Index1].Transform.position +
+            skeleton.Bones[(int)OVRSkeleton.BoneId.Hand_Middle1].Transform.position +
+            skeleton.Bones[(int)OVRSkeleton.BoneId.Hand_Ring1].Transform.position +
+            skeleton.Bones[(int)OVRSkeleton.BoneId.Hand_Pinky0].Transform.position
+            ) / 5;
+        return new Vector3[]{
+        skeleton.Bones[(int) OVRSkeleton.BoneId.Hand_Thumb3].Transform.position,
+        skeleton.Bones[(int) OVRSkeleton.BoneId.Hand_Index3].Transform.position,
+        skeleton.Bones[(int) OVRSkeleton.BoneId.Hand_Middle3].Transform.position,
+        skeleton.Bones[(int) OVRSkeleton.BoneId.Hand_Ring3].Transform.position,
+        skeleton.Bones[(int) OVRSkeleton.BoneId.Hand_Pinky3].Transform.position,
+        palmPosition
+        };
     }
 }

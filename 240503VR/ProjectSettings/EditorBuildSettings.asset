@@ -5,15 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Shimizu/Scene/P2.unity
-    guid: 63adf013102d8004da6d426de74d8113
   - enabled: 1
     path: Assets/Shimizu/Scene/P1.unity
     guid: c11a23fe90f2ecc41b6bae59e0359dbf
-  - enabled: 0
-    path: Assets/Shimizu/Scene/Observe.unity
-    guid: db28b8bb2bd2d324daa5105605e0feef
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 28b80c184f1a7304db53c4262e2f33e9, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 9414964294d682646a12263d8785de51, type: 2}
