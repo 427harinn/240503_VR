@@ -1,23 +1,24 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Animal2 : MonoBehaviour
 {
-    [SerializeField] float moveChangeDeltaTime = 2.0f;
+    [SerializeField] float moveRange = 2.0f;
     float moveChangeTime;
-    [SerializeField] float speed = 3.0f;
+    [SerializeField] float time = 3.0f;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        Move1();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (moveChangeTime >= 0)
+        /*if (moveChangeTime >= 0)
         {
             moveChangeTime -= Time.deltaTime;
         }
@@ -27,7 +28,27 @@ public class Animal2 : MonoBehaviour
             speed = -speed;
         }
 
-        gameObject.transform.position += new Vector3(0, speed, 0) * 0.1f;
+        gameObject.transform.position += new Vector3(0, speed, 0) * 0.1f;*/
+    }
+
+    private void Move1()
+    {
+        transform.DOMove(new Vector3(0, -moveRange, 0), time).SetRelative(true).OnComplete(Move2);
+    }
+
+    private void Move2()
+    {
+        transform.DORotate(new Vector3(0, 0, 360), 1, RotateMode.LocalAxisAdd).OnComplete(Move3);
+    }
+
+    private void Move3()
+    {
+        transform.DOMove(new Vector3(0, moveRange, 0), time).SetRelative(true).OnComplete(Move4);
+    }
+
+    private void Move4()
+    {
+        transform.DORotate(new Vector3(0, 0, 360), 1, RotateMode.LocalAxisAdd).OnComplete(Move1);
     }
 
     private void OnCollisionEnter(Collision collision)

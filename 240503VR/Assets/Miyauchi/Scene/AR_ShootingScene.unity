@@ -1296,6 +1296,10 @@ PrefabInstance:
       propertyPath: speed
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -8463091688160481393, guid: 6667ddfe232243647b524964054c6bdb, type: 3}
+      propertyPath: moveRange
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3388209805080154124, guid: 6667ddfe232243647b524964054c6bdb, type: 3}
       propertyPath: m_Name
       value: Animal2
@@ -2078,7 +2082,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6881286102745186806, guid: 3d5b3b5088add16498e41e6cca8753ba, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.78
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 6881286102745186806, guid: 3d5b3b5088add16498e41e6cca8753ba, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2115,6 +2119,14 @@ PrefabInstance:
     - target: {fileID: 6881286102745186806, guid: 3d5b3b5088add16498e41e6cca8753ba, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8690360813016013170, guid: 3d5b3b5088add16498e41e6cca8753ba, type: 3}
+      propertyPath: time
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8690360813016013170, guid: 3d5b3b5088add16498e41e6cca8753ba, type: 3}
+      propertyPath: moveRange
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
