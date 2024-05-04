@@ -10,7 +10,7 @@ public class ScoreManager : MonoBehaviour
     public int panel_shootiong = 0;
     public int defaultAnimalNum = 15;
     public int animalNum = 0;
-    public int defaultHP = 10;
+    public int defaultHP = 20;
     public int restHP;
 
     private void Awake()

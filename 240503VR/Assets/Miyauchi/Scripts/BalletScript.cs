@@ -13,7 +13,7 @@ public class BalletScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Invoke("DestroyBallet", 2.0f);
+        Invoke("DestroyBallet", 3.0f);
     }
 
     private void DestroyBallet()

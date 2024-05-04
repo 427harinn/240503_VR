@@ -3997,7 +3997,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score_shootiong: 0
   panel_shootiong: 0
+  defaultAnimalNum: 15
   animalNum: 15
+  defaultHP: 10
+  restHP: 0
 --- !u!4 &802674801
 Transform:
   m_ObjectHideFlags: 0
@@ -6605,7 +6608,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1469588802}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
