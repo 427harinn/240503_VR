@@ -39,11 +39,18 @@ public class MatchManager_s: MonoBehaviourPunCallbacks
         //アバター生成
         var position = playerRoot.position;
         GameObject avatar = PhotonNetwork.Instantiate("PhotonAvatar", position, Quaternion.identity);
+
+        //シールド生成
+        GameObject shield = PhotonNetwork.Instantiate("Shield_effect", Vector3.zero, Quaternion.identity);
+
         //avatar.transform.parent = playerRoot;
 
         //生成したアバターをセット
         var trans = avatar.transform.GetChild(0).transform;
         GetComponent<AvatarSyn_s>().SetPhotonAvatarTransform(trans);
+
+        //生成したシールドをセット
+        GetComponent<SendTransform_s>().SetShieldTransform(shield.transform);
 
         if (PhotonNetwork.IsMasterClient)
         {

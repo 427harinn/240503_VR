@@ -7,11 +7,12 @@ public class MyHP_s : MonoBehaviour
 {
     [SerializeField] Sprite[] HPSprites;
     [SerializeField] Image HPImage;
-    int HP = 5;
+    int HP = 25;
 
     void ChangeImage()
     {
-        HPImage.sprite = HPSprites[HP];
+        int index = (int)(HP / 5);
+        HPImage.sprite = HPSprites[index];
     }
     
     public void DecHPvalue(int i = 1)

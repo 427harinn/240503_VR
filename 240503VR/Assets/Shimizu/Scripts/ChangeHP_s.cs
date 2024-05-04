@@ -8,7 +8,7 @@ public class ChangeHP_s : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            other.GetComponent<MyHP_s>().DecHPvalue();
+            other.transform.parent.gameObject.GetComponent<MyHP_s>().DecHPvalue();
         }
     }
 }
