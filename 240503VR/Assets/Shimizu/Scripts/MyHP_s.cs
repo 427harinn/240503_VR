@@ -6,18 +6,14 @@ using UnityEngine.UI;
 public class MyHP_s : MonoBehaviour
 {
     [SerializeField] Sprite[] HPSprites;
-    Image HPImage;
-    private void Start()
-    {
-        //imageŽæ“¾
-    }
+    [SerializeField] Image HPImage;
+    int HP = 5;
 
     void ChangeImage()
     {
-
+        HPImage.sprite = HPSprites[HP];
     }
-
-    int HP = 5;
+    
     public void DecHPvalue(int i = 1)
     {
         HP -= i;
