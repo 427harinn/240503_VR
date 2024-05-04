@@ -30,7 +30,6 @@ public class MyHP_s : MonoBehaviour
         if (HP < 0)
         {
             HP = 0;
-            lose.SetActive(true);
         }
         ChangeImage();
     }
@@ -38,5 +37,15 @@ public class MyHP_s : MonoBehaviour
     public int GetHPvalue()
     {
         return HP;
+    }
+
+    public void losedef()
+    {
+        lose.SetActive(true);
+    }
+
+    public void windef()
+    {
+        win.SetActive(true);
     }
 }

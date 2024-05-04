@@ -398,7 +398,7 @@ GameObject:
   - component: {fileID: 5981011842283519343}
   m_Layer: 0
   m_Name: PhotonAvatar
-  m_TagString: Untagged
+  m_TagString: photon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -449,6 +449,9 @@ MonoBehaviour:
   - {fileID: 972603069774396413}
   - {fileID: 2643535698825906819}
   - {fileID: 3394567355683208430}
+  - {fileID: 3687642329638267733}
+  - {fileID: 5043247138064603750}
+  - {fileID: 889532642147556104}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
