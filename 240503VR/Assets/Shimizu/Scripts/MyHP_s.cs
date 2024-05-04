@@ -17,6 +17,10 @@ public class MyHP_s : MonoBehaviour
     public void DecHPvalue(int i = 1)
     {
         HP -= i;
+        if (HP < 0)
+        {
+            HP = 0;
+        }
         ChangeImage();
     }
 
