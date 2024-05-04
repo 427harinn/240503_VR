@@ -7,20 +7,29 @@ using Photon.Realtime;
 public class SendTransform_s : MonoBehaviour, IPunObservable
 {
     //元のシールドの位置
-    [SerializeField]Transform OriginShieldTransform;
+    Transform OriginShieldTransform;
     //共有するシールドの位置
-    Transform shieldTransform;
+    Transform shieldTransform = null;
+    Defence_s defence_s;
+    bool IsSield = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        //photonHeadTransform = transform.GetChild(0).gameObject.transform;
+        defence_s = GameObject.Find("Scripts").GetComponent<Defence_s>();
+        OriginShieldTransform = GameObject.FindGameObjectWithTag("shield").transform;
+        shieldTransform = transform;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (shieldTransform == null)
+        {
+            return;
+        }
+        shieldTransform.gameObject.SetActive(IsSield);
     }
 
     public void SetShieldTransform(Transform transform)
@@ -40,12 +49,17 @@ public class SendTransform_s : MonoBehaviour, IPunObservable
         {
             stream.SendNext(OriginShieldTransform.position);
             stream.SendNext(OriginShieldTransform.rotation);
+
+            IsSield = defence_s.GetIsSield();
+            stream.SendNext(IsSield);
         }
         //相手のクライアントから自身のクライアントの同期オブジェクトに送られてくる情報
         else
         {
-            shieldTransform.position = (Vector3)stream.ReceiveNext();
-            shieldTransform.rotation = (Quaternion)stream.ReceiveNext();
+            ////shieldTransform.position = (Vector3)stream.ReceiveNext();
+            ////shieldTransform.rotation = (Quaternion)stream.ReceiveNext();
+
+            IsSield = (bool)stream.ReceiveNext();
         }
     }
 }

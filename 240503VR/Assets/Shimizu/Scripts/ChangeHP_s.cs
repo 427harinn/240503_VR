@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
 
 public class ChangeHP_s : MonoBehaviour
 {
@@ -8,7 +10,7 @@ public class ChangeHP_s : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            other.transform.parent.gameObject.GetComponent<MyHP_s>().DecHPvalue();
+            other.transform.parent.gameObject.GetComponent<MyHP_s>().DecHPvalue(GetComponent<PhotonView>().IsMine);
         }
     }
 }
