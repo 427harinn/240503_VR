@@ -10,7 +10,7 @@ public class UISizeChange : MonoBehaviour
     {
         //Move1();
 
-        transform.DOBlendableScaleBy(new Vector3(0.1f, 0.1f, 0), 2f).SetLoops(-1, LoopType.Yoyo);
+        transform.DOBlendableScaleBy(new Vector3(0.1f, 0.1f, 0), 1.3f).SetLoops(-1, LoopType.Yoyo);
     }
 
     // Update is called once per frame

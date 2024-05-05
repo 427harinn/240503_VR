@@ -59,14 +59,16 @@ public class Animal2 : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Ballet")
+        if (collision.gameObject.tag == "Ballet" && !animator.GetBool("hit"))
         {
             audioSource.PlayOneShot(hitSe);
             Destroy(collision.gameObject);
             ScoreManager.instance.score_shootiong++;
+            ScoreManager.instance.score_fox++;
             ScoreManager.instance.animalNum--;
 
             animator.SetBool("hit", true);
+            Destroy(gameObject.transform.GetChild(1).gameObject);
         }
     }
     /*

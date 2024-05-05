@@ -20,7 +20,7 @@ public class Animal3 : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         animator = transform.GetChild(0).GetComponent<Animator>();
 
-        Move1();
+        Move0();
     }
 
     // Update is called once per frame
@@ -79,14 +79,16 @@ public class Animal3 : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Ballet")
+        if (collision.gameObject.tag == "Ballet" && !animator.GetBool("hit"))
         {
             audioSource.PlayOneShot(hitSe);
             Destroy(collision.gameObject);
             ScoreManager.instance.score_shootiong++;
+            ScoreManager.instance.score_pengin++;
             ScoreManager.instance.animalNum--;
 
             animator.SetBool("hit", true);
+            Destroy(gameObject.transform.GetChild(1).gameObject);
         }
     }
     /*

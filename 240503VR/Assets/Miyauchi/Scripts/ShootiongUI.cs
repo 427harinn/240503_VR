@@ -24,33 +24,38 @@ public class ShootiongUI : MonoBehaviour
         oldHP = ScoreManager.instance.restHP;
 
         restTime = playtime;
+        timeText.text = (int)restTime + "秒";
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (restTime <= 0 || ScoreManager.instance.restHP <= 0)
+        if (ScoreManager.instance.inGame)
         {
-            SceneManager.LoadScene("ShootiongResult");
-            Debug.Log("タイムアップ");
-        }
-        else
-        {
-            restTime -= Time.deltaTime;
-        }
-        timeText.text = (int)restTime + "秒";
+            if (restTime <= 0 || ScoreManager.instance.restHP <= 0)
+            {
+                SceneManager.LoadScene("ShootiongResult");
+                ScoreManager.instance.inGame = false;
+                Debug.Log("タイムアップ");
+            }
+            else
+            {
+                restTime -= Time.deltaTime;
+            }
+            timeText.text = (int)restTime + "秒";
 
-        if(ScoreManager.instance.score_shootiong != oldScore)
-        {
-            scoreText.text = "score:" + ScoreManager.instance.score_shootiong;
-        }
+            if (ScoreManager.instance.score_shootiong != oldScore)
+            {
+                scoreText.text = "score:" + ScoreManager.instance.score_shootiong;
+            }
 
-        if (ScoreManager.instance.restHP != oldHP)
-        {
-            slider.value = ScoreManager.instance.restHP;
-        }
+            if (ScoreManager.instance.restHP != oldHP)
+            {
+                slider.value = ScoreManager.instance.restHP;
+            }
 
-        oldScore = ScoreManager.instance.score_shootiong;
-        oldHP = ScoreManager.instance.restHP;
+            oldScore = ScoreManager.instance.score_shootiong;
+            oldHP = ScoreManager.instance.restHP;
+        }
     }
 }

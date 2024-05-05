@@ -6,6 +6,7 @@ public class AnimFin : MonoBehaviour
 {
     AudioSource audioSource;
     [SerializeField] AudioClip loveSe;
+    [SerializeField] AudioClip apperSe;
 
     // Start is called before the first frame update
     void Start()
@@ -27,5 +28,10 @@ public class AnimFin : MonoBehaviour
     private void LoveEffect()
     {
         audioSource.PlayOneShot(loveSe);
+    }
+
+    private void ApperAnim()
+    {
+        audioSource.PlayOneShot(apperSe);
     }
 }

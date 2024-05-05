@@ -7,22 +7,25 @@ public class AnimalSpone : MonoBehaviour
     [SerializeField] GameObject[] spones;
     [SerializeField] GameObject[] animals;
 
+
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0;  i < ScoreManager.instance.defaultAnimalNum; i++)
-        {
-            sponeDeside();
-        }
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (ScoreManager.instance.animalNum < ScoreManager.instance.defaultAnimalNum)
+        if (ScoreManager.instance.inGame)
         {
-            sponeDeside();
+            if (ScoreManager.instance.animalNum < ScoreManager.instance.defaultAnimalNum)
+            {
+                sponeDeside();
+            }
         }
+
+        
     }
 
     /// <summary>
