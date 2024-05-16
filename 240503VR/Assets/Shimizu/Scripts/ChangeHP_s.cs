@@ -6,11 +6,24 @@ using Photon.Realtime;
 
 public class ChangeHP_s : MonoBehaviour
 {
+    int playerID;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
-            other.transform.parent.gameObject.GetComponent<MyHP_s>().DecHPvalue(GetComponent<PhotonView>().IsMine);
+            if (PhotonNetwork.LocalPlayer.ActorNumber == playerID)
+            {
+                if (playerID != other.transform.parent.gameObject.GetComponent<PhotonView>().OwnerActorNr)
+                {
+                    other.transform.parent.gameObject.GetComponent<MyHP_s>().DecHPvalue();
+                }
+                
+            }
         }
+    }
+
+    public void SetID(int playerID)
+    {
+        this.playerID = playerID;
     }
 }

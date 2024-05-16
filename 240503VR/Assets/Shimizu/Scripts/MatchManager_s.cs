@@ -53,6 +53,9 @@ public class MatchManager_s: MonoBehaviourPunCallbacks
         ////生成したシールドをセット
         //GetComponent<SendTransform_s>().SetShieldTransform(shield.transform);
 
+        GameObject tmp = GameObject.FindGameObjectWithTag("shield").gameObject;
+        GetComponent<Defence_s>().SetShield(tmp);
+
         if (PhotonNetwork.IsMasterClient)
         {
             //バージョン違いで使えなかった

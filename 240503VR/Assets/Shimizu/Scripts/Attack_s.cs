@@ -3,9 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
-using Photon.Realtime;
-using static UnityEngine.GraphicsBuffer;
-using System.Numerics;
+using Photon.Pun.UtilityScripts;
 
 public class Attack_s : MonoBehaviour
 {
@@ -19,6 +17,7 @@ public class Attack_s : MonoBehaviour
     public void OnAttacked()
     {   
         GameObject obj = PhotonNetwork.Instantiate("FireBall", OVRHandR.transform.position, UnityEngine.Quaternion.identity);
+        obj.GetComponent<ChangeHP_s>().SetID(PhotonNetwork.LocalPlayer.ActorNumber);
 
         var worldPoint = transform.TransformPoint(targetPos.position);
         UnityEngine.Vector3 vec = (worldPoint - obj.transform.position).normalized;

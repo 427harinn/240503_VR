@@ -5,38 +5,38 @@ using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class MyHP_s : MonoBehaviour
+public class MyHP_s : MonoBehaviourPunCallbacks
 {
     [SerializeField] Sprite[] HPSprites;
     [SerializeField] Image HPImage;
     [SerializeField] GameObject win;
     [SerializeField] GameObject lose;
-    int HP = 25;
+    int myHP = 5;
+    int otherHP = 5;
+    int[] HPs = new int[2];
 
     void ChangeImage()
     {
-        int index = (int)(HP / 5);
-        HPImage.sprite = HPSprites[index];
+        //int index = (int)(myHP / 5);
+        HPImage.sprite = HPSprites[myHP];
     }
     
-    public void DecHPvalue(bool b, int i = 1)
+    public void DecHPvalue(int i = 1)
     {
-        if (b && GetComponent<PhotonView>().IsMine)
+        myHP -= i;
+        if (myHP < 0)
         {
-            return;
+            myHP = 0;
+            losedef();
         }
-
-        HP -= i;
-        if (HP < 0)
-        {
-            HP = 0;
-        }
+        SynHP();
         ChangeImage();
+        
     }
 
     public int GetHPvalue()
     {
-        return HP;
+        return myHP;
     }
 
     public void losedef()
@@ -47,5 +47,24 @@ public class MyHP_s : MonoBehaviour
     public void windef()
     {
         win.SetActive(true);
+    }
+
+    [PunRPC]
+    void Rpc(int[] hps)
+    {
+        myHP = hps[0];
+        otherHP = hps[1];
+
+        if (myHP == 0)
+        {
+            losedef();
+        }
+    }
+
+    public void SynHP()
+    {
+        HPs[0] = myHP;
+        HPs[1] = otherHP;
+        photonView.RPC(nameof(Rpc), RpcTarget.All, HPs);
     }
 }

@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class Defence_s : MonoBehaviour
 {
-    [SerializeField] GameObject shield;
+    GameObject shield;
     bool IsShield;
 
+    public void SetShield(GameObject obj)
+    {
+        shield = obj;
+    }
     public void OnDefenced()
     {
         shield.SetActive(true);
