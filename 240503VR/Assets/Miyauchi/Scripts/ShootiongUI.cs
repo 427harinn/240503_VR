@@ -24,7 +24,7 @@ public class ShootiongUI : MonoBehaviour
         oldHP = ScoreManager.instance.restHP;
 
         restTime = playtime;
-        timeText.text = (int)restTime + "•b";
+        timeText.text = (int)restTime + "";
     }
 
     // Update is called once per frame
@@ -42,7 +42,7 @@ public class ShootiongUI : MonoBehaviour
             {
                 restTime -= Time.deltaTime;
             }
-            timeText.text = (int)restTime + "•b";
+            timeText.text = (int)restTime + "";
 
             if (ScoreManager.instance.score_shootiong != oldScore)
             {
